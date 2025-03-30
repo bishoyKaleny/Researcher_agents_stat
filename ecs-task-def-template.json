@@ -1,0 +1,28 @@
+{
+    "family": "deploy-gradio-app",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "512",
+    "memory": "1024",
+    "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "name": "gradio-app",
+        "image": "<IMAGE>",
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 7860,
+            "protocol": "tcp"
+          }
+        ],
+        "environment": [
+          {
+            "name": "OPENAI_API_KEY",
+            "value": "secrets.openai_api_key"
+          }
+        ]
+      }
+    ]
+  }
+  

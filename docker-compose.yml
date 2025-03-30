@@ -1,0 +1,13 @@
+services:
+  gradio-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gradio_app
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    restart: unless-stopped
